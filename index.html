@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MESPT Strategic Plan 2026 - 2030</title>
+    <title>Document Portal</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <style>
         * {
@@ -154,7 +154,124 @@
             transform: translateX(4px);
         }
 
-        /* Removed unused Document List styles */
+        /* Document List Page Styles */
+        .document-list-page {
+            display: none;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .document-list-page.active {
+            display: flex;
+        }
+
+        .documents-list-container {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .list-header {
+            padding: 2rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .list-subtitle {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .documents-list {
+            flex: 1;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .document-item {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .document-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.05), transparent);
+            transition: left 0.4s ease;
+        }
+
+        .document-item:hover::before {
+            left: 100%;
+        }
+
+        .document-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            border-color: rgba(102, 126, 234, 0.3);
+        }
+
+        .document-icon {
+            font-size: 2.5rem;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .document-details {
+            flex: 1;
+        }
+
+        .document-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .document-description {
+            color: #657786;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .document-arrow {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            min-width: 40px;
+        }
+
+        .document-item:hover .document-arrow {
+            transform: translateX(4px);
+        }
         .pdf-viewer-page {
             display: none;
             flex-direction: column;
@@ -492,21 +609,13 @@
                 font-size: 0.8rem;
             }
         }
-        .landing-footer {
-            text-align: center;
-            color: #2c3e50;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 1rem;
-            box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.05);
-        }
     </style>
 </head>
 <body>
     <!-- Landing Page -->
     <div class="landing-page" id="landing-page">
         <div class="landing-header">
-            <h1 class="landing-title">MESPT Strategic Plan 2026 - 2030 (Pan Pacific Hotel Nairobi - 15th April 2026)</h1>
+            <h1 class="landing-title">MESPT Strategic Plan 2026 - 2030</h1>
             <p class="landing-subtitle">Welcome to MESPT Strategic Plan 2026 - 2030 document portal, use the links below to access the MESPT Strategic Plan 2026 - 2030 - Popular Version document.</p>
         </div>
         
@@ -520,44 +629,61 @@
                         <span class="card-type">View </span>
                         <div class="card-arrow">→</div>
                     </div>
-                </div>
-
-                <div class="document-card" onclick="window.open('https://forms.office.com/r/gJxnA4AdyW', '_blank')">
-                    <span class="card-icon">🗳️</span>
-                    <h3 class="card-title">🗳️ Feedback Form</h3>
-                    <p class="card-description">Share your feedback about the training sessions to help us improve future engagements.</p>
+                </div>               
+                <div class="document-card" onclick="window.open('https://photos.google.com/share/AF1QipPeuXX424CXMMDhzxe1mu25470pA8dAqH0K3cDyaOXvzMXHVTr44jRnVyHqt19jAA?key=ZGVvN2JfYURPeVlheEtGQnBoOEhPN1p5NUJUTnhn', '_blank')">
+                    <span class="card-icon">🗃️</span>
+                    <h3 class="card-title">Photos</h3>
+                    <p class="card-description">Browse event highlights captured throughout the day.</p>
                     <div class="card-footer">
-                        <span class="card-type">Submit Feedback</span>
+                        <span class="card-type">See Highlights</span>
                         <div class="card-arrow">→</div>
                     </div>
                 </div>
-                <div class="document-card" onclick="window.open('https://photos.google.com/share/AF1QipPeuXX424CXMMDhzxe1mu25470pA8dAqH0K3cDyaOXvzMXHVTr44jRnVyHqt19jAA?key=ZGVvN2JfYURPeVlheEtGQnBoOEhPN1p5NUJUTnhn', '_blank')">
-                    <span class="card-icon">📸</span>
-                    <h3 class="card-title">📸 Gallery</h3>
-                    <p class="card-description">A collection of captured moments worth exploring</p>
+                
+                <div class="document-card" onclick="openDocumentList('value-chain', 'Business Cards')">
+                    <span class="card-icon">🖥️</span>
+                    <h3 class="card-title">Business Cards</h3>
+                    <p class="card-description">View participants business cards.</p>
                     <div class="card-footer">
                         <span class="card-type">View</span>
                         <div class="card-arrow">→</div>
                     </div>
                 </div>
-
-                <!-- <div class="document-card" onclick="window.open('https://app.sli.do/event/wgr4wCExpRudyA7wzRNPkA', '_blank')">
-                    <span class="card-icon">💬</span>
-                    <h3 class="card-title">💬 Interactive Session (Slido)</h3>
-                    <p class="card-description">Participate in live Q&A sessions, respond to polls, and engage with facilitators in real time.</p>
+                <div class="document-card" onclick="window.open('https://forms.office.com/r/gJxnA4AdyW', '_blank')">
+                    <span class="card-icon">🗳️</span>
+                    <h3 class="card-title">🗳️ Feedback Form</h3>
+                    <p class="card-description">Share your feedback about the sessions to help us improve future engagements.</p>
                     <div class="card-footer">
-                        <span class="card-type">Join Live Discussion</span>
+                        <span class="card-type">Submit Feedback</span>
                         <div class="card-arrow">→</div>
                     </div>
-                </div> -->
+                </div>
             </div>
-        </div>
-        <div class="landing-footer">
-            <p>© MESPT 2026</p>
         </div>
     </div>
 
-    <!-- Removed Document List Page (not used) -->
+    <!-- Document List Page -->
+    <div class="document-list-page" id="document-list-page">
+        <div class="header">
+            <div class="header-left">
+                <button class="back-btn" onclick="goBackToLanding()">
+                    ← Back
+                </button>
+                <h1 class="title" id="list-title">📄 Document List</h1>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="documents-list-container">
+                <div class="list-header">
+                    <h2 class="list-subtitle" id="list-subtitle">Select a document to view</h2>
+                </div>
+                <div class="documents-list" id="documents-list">
+                    <!-- Documents will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- PDF Viewer Page -->
     <div class="pdf-viewer-page" id="pdf-viewer-page">
@@ -609,7 +735,17 @@
             constructor() {
                 this.currentDocument = null;
                 this.pdfViewer = null;
-                this.currentPage = 'landing';
+                this.currentPage = 'landing'; // 'landing', 'list', 'viewer'
+                this.valueChainDocuments = [
+                    {
+                        id: 'aquaculture-guide',
+                        name: 'Faith Kitata',
+                        description: 'Pafa Poultry Breeders & Hatcheries',
+                        path: 'card/pafa.pdf',
+                        icon: '🖥️'
+                    }
+
+                ];
                 this.initializePortal();
             }
             
@@ -621,6 +757,7 @@
             openDocument(docId, title, pdfPath) {
                 // Hide landing page and show PDF viewer
                 document.getElementById('landing-page').style.display = 'none';
+                document.getElementById('document-list-page').classList.remove('active');
                 document.getElementById('pdf-viewer-page').classList.add('active');
                 
                 // Update document title
@@ -632,10 +769,52 @@
                 this.currentPage = 'viewer';
             }
             
+            openDocumentList(category, title) {
+                // Hide landing page and show document list
+                document.getElementById('landing-page').style.display = 'none';
+                document.getElementById('pdf-viewer-page').classList.remove('active');
+                document.getElementById('document-list-page').classList.add('active');
+                
+                // Update list title
+                document.getElementById('list-title').textContent = `🖥️ ${title}`;
+                document.getElementById('list-subtitle').textContent = 'Select a document to view';
+                
+                // Populate document list based on category
+                this.populateDocumentList(category);
+                this.currentPage = 'list';
+            }
+            
+            populateDocumentList(category) {
+                const listContainer = document.getElementById('documents-list');
+                listContainer.innerHTML = '';
+                
+                let documents = [];
+                if (category === 'value-chain') {
+                    documents = this.valueChainDocuments;
+                }
+                
+                documents.forEach(doc => {
+                    const documentItem = document.createElement('div');
+                    documentItem.className = 'document-item';
+                    documentItem.onclick = () => this.openDocument(doc.id, doc.name, doc.path);
+                    
+                    documentItem.innerHTML = `
+                        <div class="document-icon">${doc.icon}</div>
+                        <div class="document-details">
+                            <div class="document-name">${doc.name}</div>
+                            <div class="document-description">${doc.description}</div>
+                        </div>
+                        <div class="document-arrow">→</div>
+                    `;
+                    
+                    listContainer.appendChild(documentItem);
+                });
+            }
             
             goBackToLanding() {
                 // Show landing page and hide other pages
                 document.getElementById('landing-page').style.display = 'flex';
+                document.getElementById('document-list-page').classList.remove('active');
                 document.getElementById('pdf-viewer-page').classList.remove('active');
                 
                 // Clean up PDF viewer if active
@@ -648,7 +827,18 @@
                 this.currentPage = 'landing';
             }
             
-            // Removed goBackToPreviousPage (unused)
+            goBackToPreviousPage() {
+                if (this.currentPage === 'viewer') {
+                    // Go back to document list if we came from there
+                    if (this.currentDocument && this.currentDocument.id.includes('value-chain')) {
+                        this.openDocumentList('value-chain', 'Presentation');
+                    } else {
+                        this.goBackToLanding();
+                    }
+                } else if (this.currentPage === 'list') {
+                    this.goBackToLanding();
+                }
+            }
             
             downloadDocument() {
                 if (!this.currentDocument) return;
@@ -886,7 +1076,7 @@
                         break;
                     case 'Escape':
                         event.preventDefault();
-                        documentPortal.goBackToLanding();
+                        documentPortal.goBackToPreviousPage();
                         break;
                     case 's':
                         if (event.ctrlKey || event.metaKey) {
@@ -939,8 +1129,16 @@
             documentPortal.openDocument(docId, title, pdfPath);
         }
 
+        function openDocumentList(category, title) {
+            documentPortal.openDocumentList(category, title);
+        }
+
         function goBackToLanding() {
             documentPortal.goBackToLanding();
+        }
+
+        function goBackToPreviousPage() {
+            documentPortal.goBackToPreviousPage();
         }
 
         function downloadDocument() {
@@ -954,3 +1152,18 @@
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
